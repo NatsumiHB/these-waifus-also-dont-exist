@@ -10,7 +10,7 @@ services:
         environment:
           - BASE_URL=https://waifus-are.fun-stuff.xyz
         volumes:
-          - ./img:/srv/this-waifu-redir/img
+          - ./img:/srv/these-waifus-really-dont-exist/img
 
 networks:
   proxy_net:

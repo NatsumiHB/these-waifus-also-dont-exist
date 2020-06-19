@@ -6,7 +6,7 @@ from flask import Flask, abort
 import templates
 import util
 
-api = Flask("these-waifus-also-dont-exist", static_url_path="/img", static_folder="./img/")
+api = Flask("these-waifus-also-dont-exist", static_url_path="/img", static_folder="../img/")
 base_url = os.getenv("BASE_URL")
 
 
