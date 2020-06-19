@@ -1,6 +1,12 @@
-import os
-
-base_url = os.getenv("BASE_URL")
+not_found = f"""
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Error 404!</h1>
+        <h2>This waifu REALLY doesn't exist.</h2>
+    </body>
+</html>
+"""
 
 
 def return_html(waifu_id, embed=False):

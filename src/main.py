@@ -6,9 +6,14 @@ from flask import Flask, abort
 import templates
 import util
 
-# api = Flask("these-waifus-also-dont-exist", static_folder="../img", static_url_path="/img/")
-app = Flask("these-waifus-also-dont-exist")
+app = Flask("these-waifus-also-dont-exist", static_folder="../img", static_url_path="/img/")
 base_url = os.getenv("BASE_URL")
+
+
+# Show the custom 404 page for 404s
+@app.errorhandler(404)
+def page_not_found(e):
+    return templates.not_found, 404
 
 
 # Return a website with a random waifu
@@ -33,4 +38,5 @@ def random_image_url():
     return f"{base_url}/img/seed{util.get_image():0>4}.png"
 
 
+app.register_error_handler(404, page_not_found)
 waitress.serve(app, host="0.0.0.0", port=5002)
