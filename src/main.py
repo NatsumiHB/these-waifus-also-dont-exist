@@ -12,7 +12,7 @@ base_url = os.getenv("BASE_URL")
 
 # Show the custom 404 page for 404s
 @api.errorhandler(404)
-def page_not_found(e):
+def page_not_found():
     return templates.not_found, 404
 
 
