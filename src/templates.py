@@ -33,8 +33,8 @@ def return_html(waifu_id, embed=False):
             <title>Waifu #{waifu_id}</title>
         </head>
         <body>
-            <a href="{base_url}/img/seed{waifu_id:0>4}.png"><h1>Waifu #{waifu_id}</h1></a>
-            <img src="{base_url}/img/seed{waifu_id:0>4}.png" alt="Waifu #{waifu_id}" width="768" height="768">
+            <a href="/img/seed{waifu_id:0>4}.png"><h1>Waifu #{waifu_id}</h1></a>
+            <img src="/img/seed{waifu_id:0>4}.png" alt="Waifu #{waifu_id}" width="768" height="768">
         </body>
     </html>
     """

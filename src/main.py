@@ -6,7 +6,7 @@ from flask import Flask, abort
 import templates
 import util
 
-api = Flask("these-waifus-also-dont-exist", static_url_path="/img", static_folder="../img/")
+api = Flask("these-waifus-also-dont-exist")
 base_url = os.getenv("BASE_URL")
 
 
@@ -35,7 +35,7 @@ def get_image_by_id(waifu_id):
 # Return a random URL
 @api.route("/get_random_url", methods=["GET"])
 def random_image_url():
-    return f"{base_url}/seed{util.get_image():0>4}.png"
+    return f"{base_url}/img/seed{util.get_image():0>4}.png"
 
 
 api.register_error_handler(404, page_not_found)
