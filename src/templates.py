@@ -1,4 +1,6 @@
-from main import base_url
+import os
+
+base_url = os.getenv("BASE_URL")
 
 not_found = f"""
 <!DOCTYPE html>
