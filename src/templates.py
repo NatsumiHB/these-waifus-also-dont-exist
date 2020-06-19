@@ -1,3 +1,7 @@
+import os
+
+base_url = os.getenv("BASE_URL")
+
 not_found = f"""
 <!DOCTYPE html>
 <html>
@@ -16,10 +20,10 @@ def return_html(waifu_id, embed=False):
         <head>
             <!-- Necessary to embed properly -->
             <!-- if this is empty you have visited a random size! -->
-            {'''
-                <link rel="image_src" hred="{url}">
-                <meta property="og:image" content="{url}">
-                <meta name="twitter:image" content="{url}">
+            {f'''
+                <link rel="image_src" href="{base_url}/img/seed{waifu_id:0>4}.png">
+                <meta property="og:image" content="{base_url}/img/seed{waifu_id:0>4}.png">
+                <meta name="twitter:image" content="{base_url}/img/seed{waifu_id:0>4}.png">
 
                 <meta property="og:image:width" content="1024">
                 <meta property="og:image:height" content="1024">
