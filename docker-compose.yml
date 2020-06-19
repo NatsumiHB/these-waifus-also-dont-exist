@@ -9,6 +9,8 @@ services:
           - proxy_net
         environment:
           - BASE_URL=https://waifus-are.fun-stuff.xyz
+        volumes:
+          - ./img:/srv/these-waifus-really-dont-exist/img
 
 networks:
   proxy_net:
