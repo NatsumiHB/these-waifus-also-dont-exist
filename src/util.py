@@ -7,7 +7,7 @@ waifu_count = 9999  # actual count is waifu_count + 1 but this variable is neede
 def validate_id(waifu_id):
     try:
         return 0 <= int(waifu_id) <= waifu_count
-    except:
+    except ValueError:
         return False
 
 
