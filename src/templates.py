@@ -1,4 +1,5 @@
 import os
+
 import util
 
 base_url = os.getenv("BASE_URL")

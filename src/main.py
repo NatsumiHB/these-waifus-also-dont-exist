@@ -1,8 +1,8 @@
 import os
 
 import waitress
-from flask import Flask, abort
 from dotenv import load_dotenv
+from flask import Flask, abort
 
 import templates
 import util
