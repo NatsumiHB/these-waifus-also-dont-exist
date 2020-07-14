@@ -2,11 +2,13 @@ import os
 
 import waitress
 from flask import Flask, abort
+from dotenv import load_dotenv
 
 import templates
 import util
 
 app = Flask("these-waifus-also-dont-exist", static_folder="../img", static_url_path="/img/")
+load_dotenv(dotenv_path="../.env")
 base_url = os.getenv("BASE_URL")
 
 
@@ -19,7 +21,7 @@ def page_not_found(e):
 # Return a website with a random waifu
 @app.route("/", methods=["GET"])
 def random_image():
-    waifu_id = util.get_image()
+    waifu_id = util.get_image_id()
     return templates.return_html(waifu_id)
 
 
@@ -33,9 +35,13 @@ def get_image_by_id(waifu_id):
 
 
 # Return a random URL
-@app.route("/get_random_url", methods=["GET"])
+@app.route("/get_json", methods=["GET"])
 def random_image_url():
-    return f"{base_url}/img/seed{util.get_image():0>4}.png"
+    waifu_id = util.get_image_id()
+    return {
+        "id": waifu_id,
+        "url": f"{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png"
+    }
 
 
 app.register_error_handler(404, page_not_found)

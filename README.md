@@ -10,8 +10,8 @@ alternatively doing the same using pipenv. If you want to use Docker, you can us
 
 For the `docker-compose` file you will need to create a network called `proxy_net` and set the BASE_URL inside of the file to the URL you will be hosting it at.
 
-| Endpoint         | Result                       |
-| :--------------: | :--------------------------: |
-| /                | Random image (HTML)          |
-| /<waifu_id>      | Image by ID (HTML)           |
-|  /get_url        | Random image (plaintext URL) |
+| Endpoint    | Result                          |
+| :---------: | :-----------------------------: |
+| /           | Random image (HTML)             |
+| /<waifu_id> | Image by ID (HTML)              |
+|  /get_json  | JSON containing ID and file_url |

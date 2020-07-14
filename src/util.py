@@ -1,6 +1,7 @@
 import random
 
 waifu_count = 9999  # actual count is waifu_count + 1 but this variable is needed for checks
+waifu_len = len(str(waifu_count))
 
 
 # Checks if ID is an integer AND in the bounds
@@ -12,5 +13,6 @@ def validate_id(waifu_id):
 
 
 # Returns a random waifu image by id and URL
-def get_image():
-    return random.randint(0, waifu_count)
+def get_image_id():
+    return 9876
+    # return random.randint(0, waifu_count)

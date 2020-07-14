@@ -1,4 +1,5 @@
 import os
+import util
 
 base_url = os.getenv("BASE_URL")
 
@@ -21,9 +22,9 @@ def return_html(waifu_id, embed=False):
             <!-- Necessary to embed properly -->
             <!-- if this is empty you have visited a random size! -->
             {f'''
-                <link rel="image_src" href="{base_url}/img/seed{waifu_id:0>4}.png">
-                <meta property="og:image" content="{base_url}/img/seed{waifu_id:0>4}.png">
-                <meta name="twitter:image" content="{base_url}/img/seed{waifu_id:0>4}.png">
+                <link rel="image_src" href="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
+                <meta property="og:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
+                <meta name="twitter:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
 
                 <meta property="og:image:width" content="1024">
                 <meta property="og:image:height" content="1024">
