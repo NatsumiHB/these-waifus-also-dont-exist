@@ -14,5 +14,4 @@ def validate_id(waifu_id):
 
 # Returns a random waifu image by id and URL
 def get_image_id():
-    return 9876
-    # return random.randint(0, waifu_count)
+    return random.randint(0, waifu_count)
