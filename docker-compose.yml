@@ -9,7 +9,6 @@ services:
           - proxy_net
         volumes:
           - ./img:/srv/these-waifus-really-dont-exist/img
-          - ./.env:/srv/these-waifus-really-dont-exist/.env
 
 networks:
   proxy_net:

@@ -1,10 +1,33 @@
-import os
+pub(crate) fn get_html(id: usize, embedded: bool) -> String {
+    format!(r#"
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <!-- Necessary to embed properly -->
+            <!-- if this is empty you have visited a random size! -->
+            {0}
+            <title>Waifu #{1}</title>
+        </head>
+        <body>
+            <a href="/img/seed{1:04}.png"><h1>Waifu #{1}</h1></a>
+            <img src="/img/seed{1:04}.png" alt="Waifu #{1}" width="768" height="768">
+        </body>
+    </html>
+    "#, if embedded {
+        r#"
+                <link rel="image_src" href="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
+                <meta property="og:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
+                <meta name="twitter:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
+                <meta property="og:image:width" content="1024">
+                <meta property="og:image:height" content="1024">
+                <meta name="twitter:card" content="summary_large_image">
+        "#
+    } else {
+        ""
+    }, id)
+}
 
-import util
-
-base_url = os.getenv("BASE_URL")
-
-not_found = f"""
+pub const NOT_FOUND: &str = r#"
 <!DOCTYPE html>
 <html>
     <body>
@@ -12,31 +35,4 @@ not_found = f"""
         <h2>This waifu REALLY doesn't exist.</h2>
     </body>
 </html>
-"""
-
-
-def return_html(waifu_id, embed=False):
-    return f"""
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <!-- Necessary to embed properly -->
-            <!-- if this is empty you have visited a random size! -->
-            {f'''
-                <link rel="image_src" href="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
-                <meta property="og:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
-                <meta name="twitter:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
-
-                <meta property="og:image:width" content="1024">
-                <meta property="og:image:height" content="1024">
-                <meta name="twitter:card" content="summary_large_image">
-            ''' if embed else ''}
-
-            <title>Waifu #{waifu_id}</title>
-        </head>
-        <body>
-            <a href="/img/seed{waifu_id:0>4}.png"><h1>Waifu #{waifu_id}</h1></a>
-            <img src="/img/seed{waifu_id:0>4}.png" alt="Waifu #{waifu_id}" width="768" height="768">
-        </body>
-    </html>
-    """
+"#;

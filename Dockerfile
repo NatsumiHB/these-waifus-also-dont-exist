@@ -1,7 +1,7 @@
-FROM python:3.8
-COPY ./ /srv/these-waifus-really-dont-exist/
-WORKDIR /srv/these-waifus-really-dont-exist/
-RUN pip install -r requirements.txt
-EXPOSE 5002
-WORKDIR ./src/
-CMD python ./main.py
+FROM rust:1.45.2
+
+WORKDIR /srv/these-waifus-also-dont-exist
+
+RUN cargo install --path .
+
+CMD ["these-waifus-also-dont-exist"]
