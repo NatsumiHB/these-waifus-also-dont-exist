@@ -1,5 +1,6 @@
-pub(crate) fn get_html(id: usize, embedded: bool) -> String {
-    format!(r#"
+pub fn get_html(id: usize, embedded: bool) -> String {
+    format!(
+        r#"
     <!DOCTYPE html>
     <html>
         <head>
@@ -13,8 +14,9 @@ pub(crate) fn get_html(id: usize, embedded: bool) -> String {
             <img src="/img/seed{1:04}.png" alt="Waifu #{1}" width="768" height="768">
         </body>
     </html>
-    "#, if embedded {
-        r#"
+    "#,
+        if embedded {
+            r#"
                 <link rel="image_src" href="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
                 <meta property="og:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
                 <meta name="twitter:image" content="{base_url}/img/seed{waifu_id:0>{util.waifu_len}}.png">
@@ -22,9 +24,11 @@ pub(crate) fn get_html(id: usize, embedded: bool) -> String {
                 <meta property="og:image:height" content="1024">
                 <meta name="twitter:card" content="summary_large_image">
         "#
-    } else {
-        ""
-    }, id)
+        } else {
+            ""
+        },
+        id
+    )
 }
 
 pub const NOT_FOUND: &str = r#"

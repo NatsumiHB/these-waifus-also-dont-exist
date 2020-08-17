@@ -11,8 +11,9 @@ After that, just run `cargo run` or run it with docker.
 
 For the `docker-compose` file you will need to create a network called `proxy_net`.
 
-| Endpoint    | Result                          |
-| :---------: | :-----------------------------: |
-| /           | Random image (HTML)             |
-| /<waifu_id> | Image by ID (HTML)              |
-|  /get_json  | JSON containing ID and file_url |
+| Endpoint             | Result                          |
+| :------------------: | :-----------------------------: |
+| /                    | Random image (HTML)             |
+| /<waifu_id>          | Image by ID (HTML)              |
+| /get_json            | JSON containing ID and file_url |
+| /get_json/<waifu_is> | JSON by ID                      |
