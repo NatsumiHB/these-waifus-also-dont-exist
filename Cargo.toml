@@ -1,7 +1,7 @@
 [package]
 name = "these-waifus-also-dont-exist"
 version = "1.1.0"
-authors = ["Natsumi H. <natsuwuuumi@gmail.com>"]
+authors = ["Natsumi H. <39241405+NatsumiHB@users.noreply.github.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
