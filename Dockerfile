@@ -5,4 +5,5 @@ COPY . .
 
 RUN cargo install --path .
 
+EXPOSE 5002
 CMD ["these-waifus-also-dont-exist"]
