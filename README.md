@@ -11,6 +11,8 @@ After that, just run `cargo run` or run it with docker.
 
 For the `docker-compose` file you will need to create a network called `proxy_net`.
 
+The server runs on port 5002, you will need to public that port in the `docker-compose.yml` file.
+
 | Endpoint             | Result                          |
 | :------------------: | :-----------------------------: |
 | /                    | Random image (HTML)             |
