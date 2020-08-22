@@ -16,4 +16,3 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: natsuwumi/these-waifus-also-dont-exist
-          tag_with_ref: true
