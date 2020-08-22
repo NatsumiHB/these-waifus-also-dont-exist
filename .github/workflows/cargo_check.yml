@@ -1,0 +1,17 @@
+name: Run cargo check
+on: [push]
+jobs:
+  cargo_check:
+    name: Run cargo check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Get toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Check code
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
