@@ -17,8 +17,11 @@ pub fn get_html(id: usize, config: &Config, random: bool) -> String {
         (String::new(), config.default_id, String::new())
     };
 
-    let headers = format!(
+    let meta_tags = format!(
         r#"
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
             <meta property="og:title" content="These Waifus Also Don't Exist">
             <meta property="og:description" content="AI-generated waifus">
             <meta name="description" content="AI-generated waifus">
@@ -44,10 +47,9 @@ pub fn get_html(id: usize, config: &Config, random: bool) -> String {
     format!(
         r#"
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
             <head>
-                {headers}
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                {meta_tags}
                 <title>Waifu #{id}</title>
             </head>
             <body>
@@ -56,7 +58,7 @@ pub fn get_html(id: usize, config: &Config, random: bool) -> String {
             </body>
         </html>
         "#,
-        headers = headers,
+        meta_tags = meta_tags,
         id = id,
         width = config.padding_width,
         format = config.image_format
