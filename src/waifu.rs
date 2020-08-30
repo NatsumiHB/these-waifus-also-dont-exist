@@ -1,4 +1,4 @@
-use crate::config::{Config, IMAGE_AMOUNT};
+use crate::config::Config;
 use rand::Rng;
 
 #[derive(serde::Serialize)]
@@ -7,11 +7,11 @@ pub struct Waifu {
     pub url: String,
 }
 
-pub fn random() -> usize {
-    rand::thread_rng().gen_range(0, IMAGE_AMOUNT)
+pub fn random(config: &Config) -> usize {
+    rand::thread_rng().gen_range(0, config.image_amount)
 }
 pub fn check(id: usize, config: &Config) -> Option<Waifu> {
-    if id >= IMAGE_AMOUNT {
+    if id >= config.image_amount {
         None
     } else {
         Some(Waifu {

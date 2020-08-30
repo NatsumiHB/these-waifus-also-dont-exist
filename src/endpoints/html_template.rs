@@ -1,17 +1,20 @@
-use crate::config;
+use crate::config::Config;
 
-pub fn get_html(id: usize, base_url: &str, random: bool) -> String {
+pub fn get_html(id: usize, config: &Config, random: bool) -> String {
     let (image_src, header_id, og_url) = if !random {
         (
             format!(
-                r#"<link rel="image_src" href="{0}/img/seed{1:04}.png">"#,
-                base_url, id
+                r#"<link rel="image_src" href="{0}/img/seed{1:0width$}.{2}">"#,
+                config.base_url,
+                id,
+                config.image_format,
+                width = config.padding_width,
             ),
             id,
             format!("/img/seed{0:04}.png", id),
         )
     } else {
-        (String::new(), config::DEFAULT_WAIFU_ID, String::new())
+        (String::new(), config.default_id, String::new())
     };
 
     let headers = format!(
@@ -21,8 +24,8 @@ pub fn get_html(id: usize, base_url: &str, random: bool) -> String {
             <meta name="description" content="AI-generated waifus">
 
             {image_src}
-            <meta property="og:image" content="{base_url}/img/seed{id:04}.png">
-            <meta name="twitter:image" content="{base_url}/img/seed{id:04}.png">
+            <meta property="og:image" content="{base_url}/img/seed{id:0width$}.{format}">
+            <meta name="twitter:image" content="{base_url}/img/seed{id:0width$}.{format}">
             <meta property="og:image:width" content="148">
             <meta property="og:image:height" content="148">
 
@@ -30,10 +33,12 @@ pub fn get_html(id: usize, base_url: &str, random: bool) -> String {
 
             <meta property="og:url" content="{base_url}/{og_url}">
         "#,
-        base_url = base_url,
+        base_url = config.base_url,
         image_src = image_src,
         id = header_id,
-        og_url = og_url
+        og_url = og_url,
+        width = config.padding_width,
+        format = config.image_format
     );
 
     format!(
@@ -46,13 +51,15 @@ pub fn get_html(id: usize, base_url: &str, random: bool) -> String {
                 <title>Waifu #{id}</title>
             </head>
             <body>
-                <a href="/img/seed{id:04}.png"><h1>Waifu #{id}</h1></a>
-                <img src="/img/seed{id:04}.png" alt="Waifu #{id}" width="768" height="768">
+                <a href="/img/seed{id:0width$}.{format}"><h1>Waifu #{id}</h1></a>
+                <img src="/img/seed{id:0width$}.{format}" alt="Waifu #{id}" width="768" height="768">
             </body>
         </html>
         "#,
         headers = headers,
-        id = id
+        id = id,
+        width = config.padding_width,
+        format = config.image_format
     )
 }
 

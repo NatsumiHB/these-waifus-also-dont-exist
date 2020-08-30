@@ -18,15 +18,15 @@ async fn random(config: Data<Config>) -> HttpResponse {
     HttpResponse::Ok()
         .content_type("text/html")
         .body(html_template::get_html(
-            waifu::random(),
-            config.base_url.as_str(),
+            waifu::random(&config),
+            &config,
             true,
         ))
 }
 
 #[get("/get_json")]
 async fn random_json(config: Data<Config>) -> Json<waifu::Waifu> {
-    let id = waifu::random();
+    let id = waifu::random(&config);
 
     Json(waifu::Waifu {
         id,
@@ -41,7 +41,7 @@ async fn choose(id: web::Path<usize>, config: Data<Config>) -> HttpResponse {
     match waifu::check(id, &config) {
         Some(_waifu) => HttpResponse::Ok()
             .content_type("text/html")
-            .body(html_template::get_html(id, config.base_url.as_str(), false)),
+            .body(html_template::get_html(id, &config, false)),
         None => HttpResponse::NotFound()
             .content_type("text/html")
             .body(html_template::NOT_FOUND),
