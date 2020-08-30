@@ -18,7 +18,7 @@ async fn main() -> anyhow::Result<()> {
             .configure(endpoints::configure)
             .data(Config {
                 base_url: env::var("BASE_URL")
-                    .unwrap_or("https://waifus-are.fun-stuff.xyz".to_owned()),
+                    .unwrap_or_else(|_| "https://waifus-are.fun-stuff.xyz".to_owned()),
             })
     })
     .bind("0.0.0.0:5002")?

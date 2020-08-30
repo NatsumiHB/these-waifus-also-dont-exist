@@ -4,3 +4,4 @@ pub struct Config {
 }
 
 pub const IMAGE_AMOUNT: usize = 10000;
+pub const DEFAULT_WAIFU_ID: usize = 2;

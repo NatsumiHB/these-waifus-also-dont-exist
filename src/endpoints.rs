@@ -14,10 +14,14 @@ pub fn configure(config: &mut ServiceConfig) {
 }
 
 #[get("/")]
-async fn random() -> HttpResponse {
+async fn random(config: Data<Config>) -> HttpResponse {
     HttpResponse::Ok()
         .content_type("text/html")
-        .body(html_template::get_html(waifu::random(), false))
+        .body(html_template::get_html(
+            waifu::random(),
+            config.base_url.as_str(),
+            true,
+        ))
 }
 
 #[get("/get_json")]
@@ -37,7 +41,7 @@ async fn choose(id: web::Path<usize>, config: Data<Config>) -> HttpResponse {
     match waifu::check(id, &config) {
         Some(_waifu) => HttpResponse::Ok()
             .content_type("text/html")
-            .body(html_template::get_html(id, true)),
+            .body(html_template::get_html(id, config.base_url.as_str(), false)),
         None => HttpResponse::NotFound()
             .content_type("text/html")
             .body(html_template::NOT_FOUND),
