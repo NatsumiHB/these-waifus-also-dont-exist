@@ -52,9 +52,9 @@ dependencies = [
 
 [[package]]
 name = "actix-files"
-version = "0.3.0-beta.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "627f597ad98061816766201db8afc7444752992f2919b2e60f53a7fa27f01aed"
+checksum = "8035f08f194893b199f4928b40425bd727c0257cf0fcf36f4ac214968d649ec7"
 dependencies = [
  "actix-http",
  "actix-service",
