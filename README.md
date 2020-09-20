@@ -2,7 +2,7 @@
 I used the dataset of ThisWaifuDoesNotExist and generated ten thousand images on my own. The website automatically returns a random image. 
 
 ## Usage
-Set the environment variables according to this table (either for your system or in `docker-compose.yml`):
+Set the environment variables according to this table (in `.env` ):
 
 | Variable     | Value                                                                                              |
 | :----------: | :------------------------------------------------------------------------------------------------: |

@@ -10,7 +10,8 @@ mod waifu;
 
 #[actix_rt::main]
 async fn main() -> anyhow::Result<()> {
-    env_logger::init();
+    pretty_env_logger::init();
+    dotenv::dotenv().ok();
 
     let image_amount = read_dir("./img").unwrap().count();
     let padding_width = image_amount.to_string().chars().count() - 1;

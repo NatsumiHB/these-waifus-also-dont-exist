@@ -7,8 +7,8 @@ services:
           - proxy_net
         volumes:
           - ./img:/srv/these-waifus-also-dont-exist/img
-        environment:
-          - RUST_LOG=info
+        env_file:
+          - .env
 
 networks:
   proxy_net:
