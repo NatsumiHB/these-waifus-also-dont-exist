@@ -2,7 +2,7 @@
 I used the dataset of ThisWaifuDoesNotExist and generated ten thousand images on my own. The website automatically returns a random image. 
 
 ## Usage
-Set the environment variables according to this table (in `.env` ):
+Set the environment variables according to this table (in `.env`):
 
 | Variable     | Value                                                                                              |
 | :----------: | :------------------------------------------------------------------------------------------------: |
@@ -11,12 +11,12 @@ Set the environment variables according to this table (in `.env` ):
 | IMAGE_FORMAT | The format of the image, defaults to `webp`                                                        |
 | DEFULT_ID    | The ID of the preview image, defaults to `2`                                                       |
 
-After that, just run `cargo run` or run it with docker.
+After that, just run `cargo run` or run it with Docker.
 
-For the `docker-compose` file you will need to create a network called `proxy_net` or remove that from `docker-compose.yml`.
+## Usage with Docker (`natsuwumi/these-waifus-also-dont-exist`)
+Set the same environment variables, you can also use a `.env` file (or use the premade one for the defaults) and specify that in your docker command.
 
-The server runs on port 5002, you will need to public that port in the `docker-compose.yml` file if you are
-not running this service through a reverse proxy on the same bridge network.
+The server runs on port 5002, you will need to publish that port.
 
 | Endpoint             | Result                          |
 | :------------------: | :-----------------------------: |
