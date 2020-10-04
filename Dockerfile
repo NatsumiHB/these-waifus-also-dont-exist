@@ -1,4 +1,4 @@
-FROM rust:1.45.2
+FROM rust:1.46-alpine
 
 WORKDIR /srv/these-waifus-also-dont-exist
 COPY . .
