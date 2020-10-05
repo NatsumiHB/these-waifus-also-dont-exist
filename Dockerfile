@@ -1,9 +1,16 @@
-FROM rust:1.46-slim
+FROM rust:1.46-alpine AS build
 
 WORKDIR /srv/these-waifus-also-dont-exist
 COPY . .
 
+RUN apk add --no-cache musl-dev
+
 RUN cargo install --path .
 
-EXPOSE 5002
-CMD ["these-waifus-also-dont-exist"]
+FROM alpine:latest
+
+WORKDIR /srv/these-waifus-also-dont-exist
+COPY --from=build /usr/local/cargo/bin/these-waifus-also-dont-exist .
+
+EXPOSE 5001
+CMD ./these-waifus-also-dont-exist
