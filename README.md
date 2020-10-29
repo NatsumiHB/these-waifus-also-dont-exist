@@ -23,7 +23,7 @@ The server runs on port 5002, you will need to publish that port.
 | /                    | Random image (HTML)             |
 | /<waifu_id>          | Image by ID (HTML)              |
 | /get_json            | JSON containing ID and file_url |
-| /get_json/<waifu_is> | JSON by ID                      |
+| /get_json/<waifu_id> | JSON by ID                      |
 
 ## Important note
 This does not come with any images, the default format is `webp` and the images will
