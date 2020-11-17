@@ -9,13 +9,6 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Get Docker metadata
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: natsuwumi/these-waifus-also-dont-exist
-          tag-sha: true
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -34,5 +27,3 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
