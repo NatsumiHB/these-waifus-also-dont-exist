@@ -16,7 +16,7 @@ jobs:
       
       - name: 'Get Previous tag'
         id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@master"
+        uses: WyriHaximus/github-action-get-previous-tag@master
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -36,5 +36,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: natsuwumi/these-waifus-also-dont-exist:${{ steps.previoustag.outputs.tag }}
+          tags: |
+            natsuwumi/these-waifus-also-dont-exist:latest
+            natsuwumi/these-waifus-also-dont-exist:${{ steps.previoustag.outputs.tag }}
           labels: ${{ steps.docker_meta.outputs.labels }}
