@@ -1,6 +1,5 @@
 name: Check if Docker image builds
-on:
-  pull_request:
+on: [pull_request]
 
 jobs:
   check_docker_build:
