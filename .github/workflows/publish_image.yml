@@ -37,4 +37,3 @@ jobs:
           tags: |
             natsuwumi/these-waifus-also-dont-exist:latest
             natsuwumi/these-waifus-also-dont-exist:${{ steps.previoustag.outputs.tag }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
