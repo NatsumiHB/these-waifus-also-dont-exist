@@ -1,5 +1,6 @@
 name: Run cargo check
 on: [push]
+
 jobs:
   cargo_check:
     name: Run cargo check
