@@ -1,25 +1,13 @@
-name: Publish Docker image
-on:
-  push:
-    branches:
-      - master
-    tags:
-      - "v*.*.*"
+name: Check if Docker image builds
+on: [pull_request]
 
 jobs:
-  push_to_registry:
-    name: Publish Docker image
+  check_docker_build:
+    name: Check if Docker image builds
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-
-      - name: Get Docker metadata
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: natsuwumi/these-waifus-also-dont-exist
-          tag-sha: true
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -38,6 +26,4 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: true
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
+          push: false
