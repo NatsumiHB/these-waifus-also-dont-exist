@@ -1,9 +1,8 @@
-name: Run cargo check
+name: Run Clippy
 on: [push]
-
 jobs:
-  cargo_check:
-    name: Run cargo check
+  run_checks:
+    name: Run Clippy
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -12,7 +11,8 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - name: Check code
-        uses: actions-rs/cargo@v1
+      - name: Run Clippy
+        uses: actions-rs/clippy-check@v1
         with:
-          command: check
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --all-features
