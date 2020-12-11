@@ -30,7 +30,10 @@ async fn random_json(config: Data<Config>) -> Json<waifu::Waifu> {
 
     Json(waifu::Waifu {
         id,
-        url: format!("{}/img/seed{:04}.png", config.base_url, id),
+        url: format!(
+            "{}/img/seed{:04}.{}",
+            config.base_url, id, config.image_format
+        ),
     })
 }
 
