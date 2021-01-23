@@ -1,5 +1,7 @@
 name: Run Clippy
+
 on: [push]
+
 jobs:
   run_checks:
     name: Run Clippy
@@ -7,10 +9,12 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+        
       - name: Get toolchain
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
       - name: Run Clippy
         uses: actions-rs/clippy-check@v1
         with:
