@@ -8,8 +8,9 @@ pub struct Waifu {
 }
 
 pub fn random(config: &Config) -> usize {
-    rand::thread_rng().gen_range(0, config.image_amount)
+    rand::thread_rng().gen_range(0..config.image_amount)
 }
+
 pub fn check(id: usize, config: &Config) -> Option<Waifu> {
     if id >= config.image_amount {
         None
